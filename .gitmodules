@@ -1,0 +1,6 @@
+[submodule "neko"]
+	path = neko
+	url = git://github.com/angavrilov/iphone-neko.git
+[submodule "gc"]
+	path = gc
+	url = git://github.com/angavrilov/iphone-libgc.git
