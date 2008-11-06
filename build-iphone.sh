@@ -36,7 +36,7 @@ mkdir -p libs
 if [ -n "$STATICLIB" ]; then
     cp -f gc/.libs/libgc.a neko/bin/libneko.a neko/libs/std/*.o neko/bin/neko libs
 else
-    cp -fd gc/.libs/libgc*.dylib neko/bin/libneko.dylib neko/bin/std.ndll neko/bin/neko libs
+    cp -fR gc/.libs/libgc*.dylib neko/bin/libneko.dylib neko/bin/std.ndll neko/bin/neko libs
 fi
 
 if [ -n "$1" ]; then
@@ -45,8 +45,14 @@ else
     TAIL=""
 fi
 
+if [ $os = "Darwin" ]; then
+    PFIX="mac"
+else
+    PFIX="linux"
+fi
+
 cd libs
-tar -cvzf ../linux-neko$TAIL.tar.gz .
+tar -cvzf ../$PFIX-neko$TAIL.tar.gz .
 
 cd ..
 
