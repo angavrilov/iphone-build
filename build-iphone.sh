@@ -41,7 +41,7 @@ cd ..
 rm -rf libs
 mkdir -p libs
 if [ -n "$STATICLIB" ]; then
-    cp -f gc/.libs/libgc.a neko/bin/libneko.a neko/libs/std/*.o neko/bin/neko libs
+    cp -f gc/.libs/libgc.a neko/bin/libneko.a neko/bin/libnekostd.a neko/bin/neko libs
 else
     cp -fR gc/.libs/libgc*.dylib neko/bin/libneko.dylib neko/bin/std.ndll neko/bin/neko libs
 fi
