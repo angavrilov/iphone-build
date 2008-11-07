@@ -5,12 +5,19 @@ source init-iphone.sh
 # MAKE GC
 cd gc
 
+# configure
+CFG_FLAGS=$HOST
+[ -z "$NO_THREADS" ] || CFG_FLAGS="$CFG_FLAGS --enable-threads=no"
+
 if [ -n "$STATICLIB" ]; then
-    ./configure $HOST --enable-shared=no --enable-cplusplus=no --enable-full-debug=yes
+    CFG_FLAGS="$CFG_FLAGS --enable-shared=no"
 else
-    ./configure $HOST --enable-shared=yes --enable-cplusplus=no --enable-full-debug=yes
+    CFG_FLAGS="$CFG_FLAGS --enable-shared=yes"
 fi
 
+./configure $CFG_FLAGS --enable-cplusplus=no --enable-full-debug=yes
+
+# build
 make clean
 nice make libdir=@executable_path -j4 || exit 1
 ln -s include gc
