@@ -6,9 +6,9 @@ source init-iphone.sh
 cd gc
 
 if [ -n "$STATICLIB" ]; then
-    ./configure --host=arm-apple-darwin9 --enable-shared=no --enable-cplusplus=no --enable-full-debug=yes
+    ./configure $HOST --enable-shared=no --enable-cplusplus=no --enable-full-debug=yes
 else
-    ./configure --host=arm-apple-darwin9 --enable-shared=yes --enable-cplusplus=no --enable-full-debug=yes
+    ./configure $HOST --enable-shared=yes --enable-cplusplus=no --enable-full-debug=yes
 fi
 
 make clean
@@ -40,9 +40,11 @@ else
 fi
 
 if [ -n "$1" ]; then
-    TAIL="-$1"
+    TAIL="$1"
+elif [ -n "$STATICLIB" ]; then
+    TAIL="static"
 else
-    TAIL=""
+    TAIL="dynamic"
 fi
 
 if [ $os = "Darwin" ]; then
@@ -52,7 +54,7 @@ else
 fi
 
 cd libs
-tar -cvzf ../$PFIX-neko$TAIL.tar.gz .
+tar -cvzf ../$PFIX-neko-$ARCH-$TAIL.tar.gz .
 
 cd ..
 
