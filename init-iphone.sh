@@ -43,7 +43,7 @@ else
 
     ARCH=armv6
     HOST=--host=arm-apple-darwin9
-    COMPILER=arm-apple-darwin-9
+    COMPILER=arm-apple-darwin9
 
     export CC=${COMPILER}-gcc
     export CXX=${COMPILER}-g++
