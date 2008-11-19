@@ -59,7 +59,6 @@ export gc_lib_path=$work_base/gc/.libs
 export gc_inc_path=$work_base/gc
 
 export IPHONE=1
-export NO_THREADS=1
 
 #	#export CPP="cpp-4.0 -nostdinc -U__powerpc__ -U__i386__ -D__arm__"
 #	#export CXXPP="cpp-4.0 -nostdinc -U__powerpc__ -U__i386__ -D__arm__"
