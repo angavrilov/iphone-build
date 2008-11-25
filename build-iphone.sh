@@ -15,7 +15,7 @@ else
     CFG_FLAGS="$CFG_FLAGS --enable-shared=yes"
 fi
 
-./configure $CFG_FLAGS --enable-cplusplus=no --enable-full-debug=yes
+./configure $CFG_FLAGS --enable-cplusplus=no --enable-full-debug=no
 
 # build
 make clean
